@@ -1,4 +1,7 @@
-<?php
+<?php if (!defined('PmWiki')) exit();
+
+$RecipeInfo['PayPalCart']['Version'] = '2016-06-13';
+
 
 #Define PayPal Add to Cart button markup
 Markup_e('AddToCart', 'inline',  '/\\(:AddToCart (.*?):\\)/', 'PayPalAddToCart("$m[1]")');
@@ -36,4 +39,3 @@ function PayPalViewCart() {
 	. "<input type='hidden' name='display' value='1'></form>";
 	return Keep($output);
 }
-?>
