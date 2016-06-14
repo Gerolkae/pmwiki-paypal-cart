@@ -1,7 +1,7 @@
 <?php
 
 #Define PayPal Add to Cart button markup
-Markup('AddToCart', 'inline',  '/\\(:AddToCart (.*?):\\)/e', 'PayPalAddToCart("$1")');
+Markup_e('AddToCart', 'inline',  '/\\(:AddToCart (.*?):\\)/', 'PayPalAddToCart("$m[1]")');
 
 function PayPalAddToCart($opts) {
 	global $PayPal_Account;
@@ -16,10 +16,6 @@ function PayPalAddToCart($opts) {
 	. "<input type='hidden' name='no_note' value='1' />\n"
 	. "<input type='hidden' name='currency_code' value='USD' />\n"
 	. "<input type='hidden' name='lc' value='US'>";
-	/*if ($args['options'] == 'yes')
-		 $output .="<table><tr><td><input type='hidden' name='on0' value='First issue'>First issue</td><td>
-<select name='os0'><option value='Current issue'>Current issue<option value='Next issue'>Next issue
-</select></td></tr></table>";*/
 	$output .= "<input type='image' src='https://www.paypal.com/en_US/i/btn/x-click-but22.gif'\n"
 	. "border='0' name='submit' alt='Make payments with PayPal - it's fast, free and secure!'>\n"
 	. "<img alt='' border='0' src='https://www.paypal.com/en_US/i/scr/pixel.gif' width='1' height='1'>\n"
@@ -28,7 +24,7 @@ function PayPalAddToCart($opts) {
 }
 
 #Define PayPal View Cart button markup
-Markup('ViewCart', 'inline',  '/\\(:ViewCart:\\)/e', 'PayPalViewCart()');
+Markup_e('ViewCart', 'inline',  '/\\(:ViewCart:\\)/', 'PayPalViewCart()');
 
 function PayPalViewCart() {
 	global $PayPal_Account;
